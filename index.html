@@ -1,0 +1,2305 @@
+ <!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Nayana & Dewmini | Wedding Invitation</title>
+
+<!-- GOOGLE FONTS -->
+<link
+    href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&family=Parisienne&display=swap"
+    rel="stylesheet"
+>
+
+<style>
+
+    /* =========================================================
+       RESET
+    ========================================================= */
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+
+    body {
+        width: 100%;
+        min-height: 100vh;
+
+        font-family: Georgia, serif;
+
+        background: #f4eee3;
+
+        color: #3d3028;
+
+        text-align: center;
+
+        overflow-x: hidden;
+    }
+
+
+    /* =========================================================
+       BACKGROUND VIDEO
+    ========================================================= */
+
+    .background-video {
+
+        position: fixed;
+
+        top: 0;
+        left: 0;
+
+        width: 100vw;
+        height: 100vh;
+
+        min-width: 100%;
+        min-height: 100%;
+
+        object-fit: cover;
+
+        object-position: center center;
+
+        z-index: -10;
+
+        pointer-events: none;
+    } 
+
+
+    /* =========================================================
+       DARK OVERLAY
+    =========================================================*/ 
+
+    .overlay {
+
+        position: fixed;
+
+        inset: 0;
+
+        width: 100%;
+        height: 100%;
+
+        background: rgba(0, 0, 0, 0.22);
+
+        z-index: -9;
+
+        pointer-events: none;
+    }
+
+
+
+    /* =========================================================
+       OPENING SCREEN
+    ========================================================= */
+
+    #openingScreen {
+
+        position: relative;
+
+        width: 100%;
+        min-height: 100vh;
+
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        padding: 25px;
+
+        color: white;
+
+        opacity: 1;
+
+        transition:
+            opacity 1s ease,
+            visibility 1s ease;
+    }
+
+
+    #openingScreen.hide {
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        pointer-events: none;
+    }
+
+
+    /* =========================================================
+       INVITATION CARD
+    ========================================================= */
+
+    .invitation-card {
+
+        width: min(90%, 600px);
+
+        padding:
+            clamp(35px, 7vw, 65px)
+            clamp(25px, 6vw, 60px);
+
+        background:
+            rgba(255, 255, 255, 0.12);
+
+        border:
+            1px solid
+            rgba(255, 255, 255, 0.45);
+
+        border-radius: 22px;
+
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+
+        box-shadow:
+            0 20px 60px
+            rgba(0, 0, 0, 0.25);
+
+        animation:
+            cardAppear 1.5s ease;
+    }
+
+
+    /* =========================================================
+       SAVE / DATE
+    ========================================================= */
+
+    .main-title {
+
+        font-family:
+            "Parisienne",
+            cursive;
+
+        font-size:
+            clamp(65px, 12vw, 115px);
+
+        font-weight: 400;
+
+        line-height: 0.85;
+
+        color: white;
+
+        text-shadow:
+            0 4px 20px
+            rgba(0, 0, 0, 0.35);
+
+        animation:
+            nameAppear 2s ease;
+    }
+
+
+    .the-text {
+
+        font-family:
+            "Parisienne",
+            cursive;
+
+        font-size:
+            clamp(32px, 6vw, 45px);
+
+        margin:
+            18px 0;
+
+        color: white;
+
+        animation:
+            nameAppear 2.2s ease;
+    }
+
+
+    /* =========================================================
+       DATE
+    ========================================================= */
+
+    .date {
+
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        gap:
+            clamp(15px, 4vw, 25px);
+
+        margin:
+            35px 0;
+
+        font-family:
+            "Bodoni Moda",
+            serif;
+
+        animation:
+            nameAppear 2.4s ease;
+    }
+
+
+    .date-number {
+
+        font-size:
+            clamp(60px, 12vw, 90px);
+
+        line-height: 1;
+
+        font-weight: 500;
+    }
+
+
+    .date-text p {
+
+        font-size:
+            clamp(12px, 2vw, 15px);
+
+        letter-spacing: 4px;
+
+        margin: 5px 0;
+    }
+
+
+    /* =========================================================
+       OPEN BUTTON
+    ========================================================= */
+
+    .open-button {
+
+        margin-top: 15px;
+
+        padding:
+            14px 38px;
+
+        border:
+            1px solid white;
+
+        border-radius: 40px;
+
+        background:
+            rgba(255, 255, 255, 0.12);
+
+        color: white;
+
+        font-family:
+            "Bodoni Moda",
+            serif;
+
+        font-size: 15px;
+
+        letter-spacing: 2px;
+
+        cursor: pointer;
+
+        transition:
+            0.35s ease;
+    }
+
+
+    .open-button:hover {
+
+        background: white;
+
+        color: #3d3028;
+
+        transform:
+            scale(1.07);
+    }
+
+
+    /* =========================================================
+       INSIDE INVITATION
+    ========================================================= */
+
+
+#insideInvitation {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100vh;
+    height: 100dvh;
+
+    background: #f4eee3;
+
+    color: #5b1828;
+
+    overflow-y: auto;
+
+    overflow-x: hidden;
+
+    text-align: center;
+
+    -webkit-overflow-scrolling: touch;
+
+    scroll-behavior: auto;
+
+    z-index: 5000;
+}
+
+
+#insideInvitation.show {
+
+    display: block;
+
+    animation: insideAppear 1.2s ease;
+}
+
+
+    /* =========================================================
+       GENERAL SECTIONS
+    ========================================================= */
+
+    section {
+
+        width: 100%;
+
+        padding:
+            90px 20px;
+    }
+
+
+    .small-title {
+
+        color: #9b7944;
+
+        font-size: 13px;
+
+        letter-spacing: 4px;
+
+        text-transform: uppercase;
+
+        margin-bottom: 15px;
+    }
+
+
+    .section-title {
+
+        font-family:
+            "Bodoni Moda",
+            serif;
+
+        font-size:
+            clamp(32px, 6vw, 55px);
+
+        font-weight: 500;
+
+        line-height: 1.2;
+
+        color: #5b1828;
+
+        margin-bottom: 25px;
+    }
+
+
+    .gold {
+
+        color: #b18a4a;
+    }
+
+
+    .message {
+
+        max-width: 650px;
+
+        margin:
+            0 auto;
+
+        font-size: 17px;
+
+        line-height: 1.9;
+
+        color: #66564b;
+    }
+
+
+    /* =========================================================
+       DETAILS
+    ========================================================= */
+
+    .details {
+
+        max-width: 1100px;
+
+        margin:
+            0 auto;
+    }
+
+
+    .cards {
+
+        width: 100%;
+
+        max-width: 1000px;
+
+        margin:
+            45px auto 0;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 25px;
+    }
+
+
+    .card {
+
+        background: white;
+
+        padding:
+            40px 25px;
+
+        border:
+            1px solid
+            rgba(177,138,74,.25);
+
+        border-radius: 10px;
+
+        box-shadow:
+            0 10px 30px
+            rgba(80,50,20,.05);
+
+        transition:
+            0.4s ease;
+    }
+
+
+    .card:hover {
+
+        transform:
+            translateY(-8px);
+
+        box-shadow:
+            0 18px 35px
+            rgba(80,50,20,.10);
+    }
+
+
+    .card h3 {
+
+        color:
+            #b18a4a;
+
+        margin-bottom:
+            15px;
+
+        letter-spacing:
+            2px;
+
+        font-size:
+            14px;
+    }
+
+
+    .card p {
+
+        color:
+            #4c4038;
+
+        line-height:
+            1.6;
+    }
+
+
+    /* =========================================================
+       COUNTDOWN
+    ========================================================= */
+
+    .countdown {
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        gap:
+            clamp(20px, 5vw, 50px);
+
+        margin-top:
+            45px;
+
+        flex-wrap: wrap;
+    }
+
+
+    .time-box {
+
+        min-width: 90px;
+    }
+
+
+    .number {
+
+        font-family:
+            "Bodoni Moda",
+            serif;
+
+        font-size:
+            clamp(35px, 7vw, 55px);
+
+        color:
+            #9b7944;
+    }
+
+
+    .label {
+
+        font-size:
+            11px;
+
+        letter-spacing:
+            2px;
+
+        text-transform:
+            uppercase;
+
+        color:
+            #66564b;
+    }
+
+
+    /* =========================================================
+       VENUE BUTTON
+    ========================================================= */
+
+    .button {
+
+        display:
+            inline-block;
+
+        margin-top:
+            30px;
+
+        padding:
+            13px 30px;
+
+        border:
+            1px solid
+            #b18a4a;
+
+        border-radius:
+            30px;
+
+        background:
+            transparent;
+
+        color:
+            #8d6c3c;
+
+        text-decoration:
+            none;
+
+        font-size:
+            13px;
+
+        letter-spacing:
+            2px;
+
+        transition:
+            0.3s ease;
+    }
+
+
+    .button:hover {
+
+        background:
+            #b18a4a;
+
+        color:
+            white;
+
+        transform:
+            translateY(-2px);
+    }
+
+
+    /* =========================================================
+       GALLERY
+    ========================================================= */
+
+    .gallery {
+
+        width: 100%;
+
+        max-width: 900px;
+
+        margin:
+            40px auto;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap:
+            18px;
+    }
+
+
+    .gallery img {
+
+        width: 100%;
+
+        height: 320px;
+
+        object-fit: cover;
+
+        border-radius:
+            15px;
+
+        display: block;
+
+        cursor: pointer;
+
+        transition:
+            0.4s ease;
+
+        box-shadow:
+            0 8px 25px
+            rgba(0,0,0,.08);
+    }
+
+
+    .gallery img:hover {
+
+        transform:
+            scale(1.025);
+    }
+
+
+    /* =========================================================
+       RSVP
+    ========================================================= */
+
+    .rsvp-form {
+
+        width: 100%;
+
+        max-width: 550px;
+
+        margin:
+            40px auto 0;
+
+        display: flex;
+
+        flex-direction:
+            column;
+
+        gap:
+            15px;
+    }
+
+
+    .rsvp-form input,
+    .rsvp-form select,
+    .rsvp-form textarea {
+
+        width: 100%;
+
+        padding:
+            15px 18px;
+
+        border:
+            1px solid
+            rgba(177,138,74,.45);
+
+        background:
+            white;
+
+        color:
+            #3d3028;
+
+        font-family:
+            Georgia,
+            serif;
+
+        font-size:
+            15px;
+
+        outline:
+            none;
+
+        border-radius:
+            5px;
+    }
+
+
+    .rsvp-form input:focus,
+    .rsvp-form select:focus,
+    .rsvp-form textarea:focus {
+
+        border-color:
+            #b18a4a;
+
+        box-shadow:
+            0 0 10px
+            rgba(177,138,74,.12);
+    }
+
+
+    .rsvp-form textarea {
+
+        resize:
+            vertical;
+
+        min-height:
+            110px;
+    }
+
+
+    .rsvp-form .button {
+
+        align-self:
+            center;
+
+        cursor:
+            pointer;
+
+        font-family:
+            Georgia,
+            serif;
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+
+        padding:
+            55px 20px;
+
+        background:
+            #30251f;
+
+        color:
+            #eee;
+    }
+
+
+    footer .gold {
+
+        color:
+            #d4b06d;
+    }
+
+
+    /* =========================================================
+       PHOTO MODAL
+    ========================================================= */
+
+    .photo-modal {
+
+        display:
+            none;
+
+        position:
+            fixed;
+
+        inset:
+            0;
+
+        width:
+            100%;
+
+        height:
+            100%;
+
+        background:
+            rgba(0,0,0,.92);
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        z-index:
+            99999;
+
+        padding:
+            20px;
+    }
+
+
+    .photo-modal img {
+
+        max-width:
+            95%;
+
+        max-height:
+            90%;
+
+        object-fit:
+            contain;
+
+        border-radius:
+            15px;
+    }
+
+
+    .close-photo {
+
+        position:
+            absolute;
+
+        top:
+            15px;
+
+        right:
+            25px;
+
+        font-size:
+            45px;
+
+        color:
+            white;
+
+        cursor:
+            pointer;
+
+        z-index:
+            2;
+    }
+
+
+    /* =========================================================
+       ANIMATIONS
+    ========================================================= */
+
+    @keyframes cardAppear {
+
+        from {
+
+            opacity: 0;
+
+            transform:
+                scale(.8);
+        }
+
+        to {
+
+            opacity: 1;
+
+            transform:
+                scale(1);
+        }
+    }
+
+
+    @keyframes nameAppear {
+
+        0% {
+
+            opacity: 0;
+
+            transform:
+                scale(.6);
+        }
+
+        60% {
+
+            opacity: 1;
+
+            transform:
+                scale(1.08);
+        }
+
+        100% {
+
+            opacity: 1;
+
+            transform:
+                scale(1);
+        }
+    }
+
+
+    @keyframes insideAppear {
+
+        from {
+
+            opacity: 0;
+        }
+
+        to {
+
+            opacity: 1;
+        }
+    }
+
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 900px) {
+
+        .cards {
+
+            grid-template-columns:
+                repeat(2, 1fr);
+        }
+    }
+
+
+    /* =========================================================
+       MOBILE / 4 INCH PHONE
+    ========================================================= */
+
+    @media (max-width: 600px) {
+
+        #openingScreen {
+
+            min-height:
+                100svh;
+
+            padding:
+                15px;
+        }
+
+
+        .invitation-card {
+
+            width:
+                94%;
+
+            padding:
+                40px 20px;
+
+            border-radius:
+                18px;
+        }
+
+
+        .main-title {
+
+            font-size:
+                clamp(58px, 19vw, 85px);
+        }
+
+
+        .the-text {
+
+            font-size:
+                34px;
+
+            margin:
+                15px 0;
+        }
+
+
+        .date {
+
+            margin:
+                25px 0;
+
+            gap:
+                14px;
+        }
+
+
+        .date-number {
+
+            font-size:
+                65px;
+        }
+
+
+        .date-text p {
+
+            font-size:
+                11px;
+
+            letter-spacing:
+                3px;
+        }
+
+
+        .open-button {
+
+            padding:
+                12px 30px;
+
+            font-size:
+                13px;
+        }
+
+
+        section {
+
+            padding:
+                70px 18px;
+        }
+
+
+        .cards {
+
+            grid-template-columns:
+                1fr;
+
+            gap:
+                18px;
+        }
+
+
+        .card {
+
+            padding:
+                30px 20px;
+        }
+
+
+        .countdown {
+
+            gap:
+                25px 20px;
+        }
+
+
+        .time-box {
+
+            min-width:
+                70px;
+        }
+
+
+        .gallery {
+
+            grid-template-columns:
+                1fr;
+
+            gap:
+                15px;
+        }
+
+
+        .gallery img {
+
+            height:
+                300px;
+        }
+
+
+        .section-title {
+
+            font-size:
+                32px;
+        }
+
+
+        .message {
+
+            font-size:
+                15px;
+
+            line-height:
+                1.8;
+        }
+
+
+        .rsvp-form {
+
+            width:
+                100%;
+        }
+
+
+        footer {
+
+            padding:
+                45px 20px;
+        }
+    }
+
+
+    /* =========================================================
+       VERY SMALL PHONES
+    ========================================================= */
+
+    @media (max-width: 380px) {
+
+        .invitation-card {
+
+            padding:
+                32px 16px;
+        }
+
+
+        .main-title {
+
+            font-size:
+                58px;
+        }
+
+
+        .the-text {
+
+            font-size:
+                30px;
+        }
+
+
+        .date-number {
+
+            font-size:
+                55px;
+        }
+
+
+        .date-text p {
+
+            font-size:
+                10px;
+        }
+
+
+        .countdown {
+
+            gap:
+                20px 12px;
+        }
+
+
+        .time-box {
+
+            min-width:
+                60px;
+        }
+
+
+        .number {
+
+            font-size:
+                32px;
+        }
+    }
+
+    /* =========================================================
+   MOBILE VIDEO
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .background-video {
+        width: 100vw;
+        height: 100dvh;
+
+        object-fit: cover;
+
+        object-position: center center;
+    }
+
+}
+
+/* =========================================================
+   VENUE MAP
+========================================================= */
+
+.venue-section {
+    position: relative;
+}
+
+
+.map-container {
+
+    width: 100%;
+
+    max-width: 900px;
+
+    height: 400px;
+
+    margin: 45px auto 0;
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    border: 1px solid
+        rgba(177, 138, 74, 0.45);
+
+    box-shadow:
+        0 15px 40px
+        rgba(80, 50, 20, 0.12);
+
+    background: #ddd;
+}
+
+
+.map-container iframe {
+
+    width: 100%;
+
+    height: 100%;
+
+    border: 0;
+
+    display: block;
+}
+
+
+.map-button {
+
+    margin-top: 25px;
+}
+
+
+/* =========================================================
+   MOBILE MAP
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .map-container {
+
+        height: 300px;
+
+        margin-top: 35px;
+
+        border-radius: 16px;
+
+    }
+
+    .map-button {
+
+        font-size: 11px;
+
+        padding:
+            12px 22px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =========================================================
+     MUSIC
+========================================================== -->
+
+<audio
+    id="weddingMusic"
+    loop
+    preload="auto">
+
+    <source
+        src="music.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+<!-- =========================================================
+     BACKGROUND VIDEO
+========================================================== -->
+
+<video
+    class="background-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto">
+
+    <source
+        src="background.mp4"
+        type="video/mp4">
+
+    Your browser does not support video.
+
+</video>
+
+
+<!-- DARK OVERLAY -->
+
+<div class="overlay"></div>
+
+
+<!-- =========================================================
+     OPENING SCREEN
+========================================================== -->
+
+<div id="openingScreen">
+
+    <div class="invitation-card">
+
+        <h1 class="main-title">
+            Save
+        </h1>
+
+        <div class="the-text">
+            The
+        </div>
+
+        <h1 class="main-title">
+            Date
+        </h1>
+
+
+        <div class="date">
+
+            <div class="date-number">
+                05
+            </div>
+
+            <div class="date-text">
+
+                <p>
+                    AUGUST
+                </p>
+
+                <p>
+                    2027
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="open-button"
+            onclick="openInvitation()">
+
+            OPEN INVITATION
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     INSIDE INVITATION
+========================================================== -->
+
+<main id="insideInvitation">
+
+
+    <!-- INVITATION -->
+
+    <section>
+
+        <div class="small-title">
+            We are getting married
+        </div>
+
+        <h2 class="section-title">
+            Two hearts, one beautiful journey
+        </h2>
+
+        <p class="message">
+
+            With joyful hearts and the blessings
+            of our families, we invite you to
+            celebrate the beginning of our forever.
+
+            <br><br>
+
+            Your presence will make our special
+            day even more meaningful.
+
+        </p>
+
+    </section>
+
+
+    <!-- DETAILS -->
+
+    <section class="details">
+
+        <div class="small-title">
+            Save the date
+        </div>
+
+        <h2 class="section-title">
+
+            Wedding
+            <span class="gold">
+                Details
+            </span>
+
+        </h2>
+
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>
+                    DATE
+                </h3>
+
+                <p>
+                    05 August 2027
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    VENUE
+                </h3>
+
+                <p>
+                    Polhena Grand Resort &amp; Banquet
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    CELEBRATION
+                </h3>
+
+                <p>
+                    Wedding Ceremony
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- COUNTDOWN -->
+
+    <section>
+
+        <div class="small-title">
+            Counting every moment
+        </div>
+
+        <h2 class="section-title">
+
+            Until our
+            <span class="gold">
+                Big Day
+            </span>
+
+        </h2>
+
+
+        <div class="countdown">
+
+            <div class="time-box">
+
+                <div
+                    class="number"
+                    id="days">
+
+                    00
+
+                </div>
+
+                <div class="label">
+                    Days
+                </div>
+
+            </div>
+
+
+            <div class="time-box">
+
+                <div
+                    class="number"
+                    id="hours">
+
+                    00
+
+                </div>
+
+                <div class="label">
+                    Hours
+                </div>
+
+            </div>
+
+
+            <div class="time-box">
+
+                <div
+                    class="number"
+                    id="minutes">
+
+                    00
+
+                </div>
+
+                <div class="label">
+                    Minutes
+                </div>
+
+            </div>
+
+
+            <div class="time-box">
+
+                <div
+                    class="number"
+                    id="seconds">
+
+                    00
+
+                </div>
+
+                <div class="label">
+                    Seconds
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+ <!-- =========================================================
+     VENUE
+========================================================== -->
+
+<section class="venue-section">
+
+    <div class="small-title">
+        Join us
+    </div>
+
+    <h2 class="section-title">
+
+        Polhena Grand Resort
+        <span class="gold">
+            &amp;
+        </span>
+        Banquet
+
+    </h2>
+
+    <p class="message">
+
+        We would be delighted to have
+        you with us as we celebrate
+        our special day.
+
+    </p>
+
+
+    <!-- MAP -->
+
+    <div class="map-container">
+
+        <iframe
+            src="https://www.google.com/maps?q=Polhena+Grand+Resort+and+Banquet&output=embed"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+
+    </div>
+
+
+    <!-- MAP BUTTON -->
+
+    <a
+        class="button map-button"
+        href="https://www.google.com/maps/search/?api=1&query=Polhena+Grand+Resort+and+Banquet"
+        target="_blank">
+
+        📍 OPEN IN GOOGLE MAPS
+
+    </a>
+
+</section>
+
+
+    <!-- GALLERY -->
+
+    <section>
+
+        <div class="small-title">
+            Our memories
+        </div>
+
+        <h2 class="section-title">
+
+            Beautiful
+            <span class="gold">
+                Moments
+            </span>
+
+        </h2>
+
+
+        <div class="gallery">
+
+            <img
+                src="images/1couple.jpg"
+                alt="Nayana and Dewmini">
+
+            <img
+                src="images/2couple.jpg"
+                alt="Nayana and Dewmini">
+
+            <img
+                src="images/3couple.jpg"
+                alt="Nayana and Dewmini">
+
+            <img
+                src="images/4couple.jpg"
+                alt="Nayana and Dewmini">
+
+        </div>
+
+    </section>
+
+
+    <!-- RSVP -->
+
+    <section id="rsvp">
+
+        <div class="small-title">
+            We hope to see you
+        </div>
+
+        <h2 class="section-title">
+
+            Confirm Your
+            <span class="gold">
+                Attendance
+            </span>
+
+        </h2>
+
+
+        <p class="message">
+
+            Please let us know if you will
+            be joining us on our special day.
+
+        </p>
+
+
+        <div class="rsvp-form">
+
+            <input
+                type="text"
+                id="guestName"
+                placeholder="Your Name"
+                required>
+
+
+            <select id="attendance">
+
+                <option value="">
+                    Will you attend?
+                </option>
+
+                <option value="Yes, I will attend">
+                    Yes, I will attend
+                </option>
+
+                <option value="Sorry, I cannot attend">
+                    Sorry, I cannot attend
+                </option>
+
+            </select>
+
+
+            <input
+                type="number"
+                id="guestCount"
+                placeholder="Number of Guests"
+                min="1">
+
+
+            <textarea
+                id="guestMessage"
+                placeholder="Message (optional)"
+                rows="4"></textarea>
+
+
+            <button
+                class="button"
+                type="button"
+                onclick="sendRSVP()">
+
+                CONFIRM YOUR ATTENDANCE
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            With love,
+        </p>
+
+        <h2 class="gold">
+            Nayana &amp; Dewmini
+        </h2>
+
+        <p style="margin-top:15px;">
+            05 • 08 • 2027
+        </p>
+
+    </footer>
+
+
+</main>
+
+
+<!-- =========================================================
+     PHOTO MODAL
+========================================================== -->
+
+<div
+    id="photoModal"
+    class="photo-modal">
+
+    <span
+        class="close-photo">
+
+        &times;
+
+    </span>
+
+    <img
+        id="largePhoto"
+        src=""
+        alt="Wedding Photo">
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================== -->
+<script>
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+const music = document.getElementById("weddingMusic");
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const openingScreen =
+    document.getElementById("openingScreen");
+
+const insideInvitation =
+    document.getElementById("insideInvitation");
+
+
+/* =========================================================
+   AUTO SCROLL
+========================================================= */
+
+let autoScrollTimer = null;
+
+let autoScrollRunning = false;
+
+
+/* =========================================================
+   OPEN INVITATION
+========================================================= */
+
+function openInvitation() {
+
+    /* Music */
+
+    music.volume = 0.45;
+
+    music.play().catch(function(error) {
+        console.log("Music:", error);
+    });
+
+
+    /* Hide opening */
+
+    openingScreen.classList.add("hide");
+
+
+    setTimeout(function() {
+
+        openingScreen.style.display = "none";
+
+
+        /* Show invitation */
+
+        insideInvitation.classList.add("show");
+
+
+        /* IMPORTANT */
+
+        insideInvitation.scrollTop = 0;
+
+
+        /*
+           Wait until browser finishes
+           displaying the invitation
+        */
+
+        setTimeout(function() {
+
+            startAutoScroll();
+
+        }, 1500);
+
+
+    }, 1000);
+}
+
+
+/* =========================================================
+   START AUTO SCROLL
+========================================================= */
+
+function startAutoScroll() {
+
+    stopAutoScroll();
+
+
+    autoScrollRunning = true;
+
+
+    autoScrollTimer = setInterval(function() {
+
+        if (!autoScrollRunning) {
+            return;
+        }
+
+
+        /*
+           SCROLL DOWN
+        */
+
+        insideInvitation.scrollTop =
+            insideInvitation.scrollTop + 1;
+
+
+        /*
+           CHECK BOTTOM
+        */
+
+        if (
+            insideInvitation.scrollTop +
+            insideInvitation.clientHeight
+            >=
+            insideInvitation.scrollHeight - 2
+        ) {
+
+            stopAutoScroll();
+
+        }
+
+    }, 50);
+
+}
+
+
+/* =========================================================
+   STOP AUTO SCROLL
+========================================================= */
+
+function stopAutoScroll() {
+
+    autoScrollRunning = false;
+
+
+    if (autoScrollTimer !== null) {
+
+        clearInterval(
+            autoScrollTimer
+        );
+
+        autoScrollTimer = null;
+
+    }
+
+}
+
+
+/* =========================================================
+   USER TOUCH
+========================================================= */
+
+insideInvitation.addEventListener(
+    "touchstart",
+    function() {
+
+        stopAutoScroll();
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+/* =========================================================
+   USER TOUCH MOVE
+========================================================= */
+
+insideInvitation.addEventListener(
+    "touchmove",
+    function() {
+
+        stopAutoScroll();
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+/* =========================================================
+   MOUSE WHEEL
+========================================================= */
+
+insideInvitation.addEventListener(
+    "wheel",
+    function() {
+
+        stopAutoScroll();
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+/* =========================================================
+   KEYBOARD
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        const keys = [
+            "ArrowDown",
+            "ArrowUp",
+            "PageDown",
+            "PageUp",
+            "Home",
+            "End",
+            " "
+        ];
+
+
+        if (
+            keys.includes(event.key)
+        ) {
+
+            stopAutoScroll();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   COUNTDOWN
+========================================================= */
+
+const weddingDate =
+    new Date(
+        "August 5, 2027 10:00:00"
+    ).getTime();
+
+
+function updateCountdown() {
+
+    const now =
+        new Date().getTime();
+
+
+    const distance =
+        weddingDate - now;
+
+
+    if (distance <= 0) {
+
+        document.getElementById("days").innerText = "00";
+        document.getElementById("hours").innerText = "00";
+        document.getElementById("minutes").innerText = "00";
+        document.getElementById("seconds").innerText = "00";
+
+        return;
+    }
+
+
+    const days =
+        Math.floor(
+            distance /
+            (1000 * 60 * 60 * 24)
+        );
+
+
+    const hours =
+        Math.floor(
+            (
+                distance %
+                (1000 * 60 * 60 * 24)
+            ) /
+            (1000 * 60 * 60)
+        );
+
+
+    const minutes =
+        Math.floor(
+            (
+                distance %
+                (1000 * 60 * 60)
+            ) /
+            (1000 * 60)
+        );
+
+
+    const seconds =
+        Math.floor(
+            (
+                distance %
+                (1000 * 60)
+            ) /
+            1000
+        );
+
+
+    document.getElementById("days").innerText =
+        String(days).padStart(2, "0");
+
+
+    document.getElementById("hours").innerText =
+        String(hours).padStart(2, "0");
+
+
+    document.getElementById("minutes").innerText =
+        String(minutes).padStart(2, "0");
+
+
+    document.getElementById("seconds").innerText =
+        String(seconds).padStart(2, "0");
+
+}
+
+
+updateCountdown();
+
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+
+/* =========================================================
+   PHOTO LIGHTBOX
+========================================================= */
+
+const photos =
+    document.querySelectorAll(
+        ".gallery img"
+    );
+
+
+const modal =
+    document.getElementById(
+        "photoModal"
+    );
+
+
+const largePhoto =
+    document.getElementById(
+        "largePhoto"
+    );
+
+
+const closePhoto =
+    document.querySelector(
+        ".close-photo"
+    );
+
+
+photos.forEach(function(photo) {
+
+    photo.addEventListener(
+        "click",
+        function() {
+
+            modal.style.display = "flex";
+
+            largePhoto.src =
+                photo.src;
+
+        }
+    );
+
+});
+
+
+closePhoto.addEventListener(
+    "click",
+    function() {
+
+        modal.style.display = "none";
+
+    }
+);
+
+
+modal.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            event.target === modal
+        ) {
+
+            modal.style.display = "none";
+
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            modal.style.display = "none";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   WHATSAPP RSVP
+========================================================= */
+
+function sendRSVP() {
+
+    const name =
+        document
+            .getElementById("guestName")
+            .value
+            .trim();
+
+
+    const attendance =
+        document
+            .getElementById("attendance")
+            .value;
+
+
+    const guestCount =
+        document
+            .getElementById("guestCount")
+            .value;
+
+
+    const message =
+        document
+            .getElementById("guestMessage")
+            .value
+            .trim();
+
+
+    if (!name || !attendance) {
+
+        alert(
+            "Please enter your name and attendance."
+        );
+
+        return;
+    }
+
+
+    const whatsappNumber =
+        "94774390705";
+
+
+    const whatsappMessage =
+`💍 Wedding RSVP
+
+Name: ${name}
+
+Attendance: ${attendance}
+
+Number of Guests: ${guestCount || "Not specified"}
+
+Message:
+${message || "No message"}
+
+━━━━━━━━━━━━━━
+
+Nayana & Dewmini
+05 • 08 • 2027
+
+Polhena Grand Resort & Banquet`;
+
+
+    const whatsappURL =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        encodeURIComponent(
+            whatsappMessage
+        );
+
+
+    window.open(
+        whatsappURL,
+        "_blank"
+    );
+
+}
+
+</script>
+
+</body>
+
+</html>
